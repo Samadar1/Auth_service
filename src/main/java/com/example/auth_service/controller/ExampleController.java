@@ -11,10 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/example")
-@RequiredArgsConstructor
+
 @Tag(name = "Аутентификация")
 public class ExampleController {
     private final UserService service;
+
+    public ExampleController(UserService service) {
+        this.service = service;
+    }
 
     @GetMapping
     @Operation(summary = "Доступен только авторизованным пользователям")
