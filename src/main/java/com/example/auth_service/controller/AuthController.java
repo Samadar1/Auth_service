@@ -40,7 +40,12 @@ public class AuthController {
     @Operation(summary = "сверка пользователей")
     @PostMapping("/check-jwt")
     public ResponseEntity<checkjwtResponse> extractUsername(@RequestBody checkjwtRequest request) {
-        String username = jwtService.extractUserName(request.getToken());
-        return ResponseEntity.ok(new checkjwtResponse(username));
+        try {
+            String username = jwtService.extractUserName(request.getToken());
+            return ResponseEntity.ok(new checkjwtResponse(username));
+        }
+        catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
