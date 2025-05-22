@@ -1,14 +1,14 @@
 package com.example.auth_service.service;
 
-import com.example.auth_service.dto.JwtAuthenticationResponse;
-import com.example.auth_service.dto.SignInRequest;
-import com.example.auth_service.dto.SignUpRequest;
+import com.example.auth_service.dto.*;
 import com.example.auth_service.model.Role;
 import com.example.auth_service.model.User;
 import io.swagger.v3.oas.annotations.info.Contact;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -71,4 +71,5 @@ public class AuthenticationService {
         var jwt = jwtService.generateToken(user);
         return new JwtAuthenticationResponse(jwt);
     }
+
 }
