@@ -139,18 +139,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.3.5</version>
                 <executions>
                     <execution>
-                        <id>build-image</id>
                         <goals>
-                            <goal>build-image</goal>
+                            <goal>repackage</goal> <!-- Это важно для создания fat jar -->
                         </goals>
-                        <configuration>
-                            <image>
-                                <name>my-auth-service:latest</name>
-                            </image>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
